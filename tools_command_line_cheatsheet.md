@@ -16,7 +16,7 @@ wmic /node:10.1.1.1 nicconfig get
 
 ##### Spot executables running from strange locations:
 wmic PROCESS WHERE "NOT ExecutablePath LIKE '%Windows%'" GET ExecutablePath
-
+#
 ### autorunsc example
 
 autorunsc -accepteula -a * -s -c -h -vr > \\siftworksation\cases\Response\10.1.1.1-arun.csv
@@ -69,22 +69,31 @@ AmcacheParser.exe -f "C:\Temp\amcache\AmcacheWin10.hve" -w "c:\temp\whitelist.tx
 ### Appcompatprocessor.py Syntax Examples
 `./AppCompatProcessor.py ./database.db stack "filePath" "fileName like '%servicehost.exe'"`
     stacking by file path and file name
+
 `./appcompatprocessor.py ./database.db stack fsearch Filepath -f "ProgramData"`
     stacking by filepath
+
 `./AppCompatProcessor.py ./database.db fsearch FileName -F "cmd.exe"`
     Will search the FileName field for anything that contains 'cmd.exe' 
+
 `./AppCompatProcessor.py ./database.db fsearch FileName -F "=cmd.exe"`
     Will search the FileName field for anything that exactly matches 'cmd.exe' 
+
 `./AppCompatProcessor.py ./database.db fsearch Size -F "4096"`
     Will find files whose size contains "4096" 
+
 `./AppCompatProcessor.py ./database.db fsearch Size -F "=4096"`
     Will find files whose size _is_ "4096" 
+    
 `./AppCompatProcessor.py ./database.db fsearch Size -F ">4096"`
     Will find files whose size is bigger than 4096 bytes (and has Size data of course: XP appcompat or AmCache data)
+
 `./AppCompatProcessor.py ./test-AmCache.db fsearch Product -F "Microsoft@"`
     Will find files for some attackers that regularly screwed the trademark symbol on the versioning information on their tools.
+
 `./AppCompatProcessor.py ./test-AmCache.db fsearch Product -F "Microsoft@"` 
     find by producet
+    
 ##### also see the regex options and other modules
 
 #
