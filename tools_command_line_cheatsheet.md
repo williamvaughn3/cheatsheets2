@@ -27,12 +27,13 @@ wmic startup get Caption,COmmand,Location,User
 ```
 
 ### autorunsc example
-
+```
 autorunsc -accepteula -a * -s -c -h -vr > \\siftworksation\cases\Response\10.1.1.1-arun.csv
 autorunsc.exe /accepteula -a * -c -h -s '*' -nobanner
-<i>
-##### Validate if code/file is signed by valid/known publisher; May need to reset columns in timeline explorer (under tools)
-</i>
+```
+
+*Validate if code/file is signed by valid/known publisher; May need to reset columns in timeline explorer (under tools)*
+
 ### Kansa examples:
 
 .\kansa.ps1 -TargetList .\hostlist -Pushbin
@@ -107,7 +108,9 @@ AmcacheParser.exe -f "C:\Temp\amcache\AmcacheWin10.hve" -w "c:\temp\whitelist.tx
 
 #
 
-### Evtxcmd, yet another awesome tool by Eric Zimmerman.  A command line tool for parsing Windows Event Log (EVTX) files. It can be used to extract events from a single file or a directory of files. Can use to export events to CSV, JSON, or HTML.  Leverages the xpath with open/crowd sourced map files to make parsing much simplier.
+### Evtxcmd, 
+
+> yet another awesome tool by Eric Zimmerman.  A command line tool for parsing Windows Event Log (EVTX) files. It can be used to extract events from a single file or a directory of files. Can use to export events to CSV, JSON, or HTML.  Leverages the xpath with open/crowd sourced map files to make parsing much simplier.
 
 Examples Syntax:
 ```        
@@ -115,5 +118,4 @@ Examples Syntax:
     EvtxECmd.exe -f "C:\Temp\Application.evtx" --csv "c:\temp\out"
     EvtxECmd.exe -f "C:\Temp\Application.evtx" --json "c:\temp\jsonout"
     evtxecmd -f C:\Windows\system32\winevt\logs\Security.evtx --csv C:\Temp\event-logs --csvf security.csv
-
 ```
