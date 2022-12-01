@@ -16,7 +16,16 @@ wmic /node:10.1.1.1 nicconfig get
 
 ##### Spot executables running from strange locations:
 wmic PROCESS WHERE "NOT ExecutablePath LIKE '%Windows%'" GET ExecutablePath
-#
+
+
+#### Possible WMIC recon
+```
+wmic process get CSName,Description,ExecutablePath,ProcessId
+wmic useraccount list full; wmic group list full; wmic netuse list full;
+wmic qfe get Caption,Description,HotFixID,InstalledOn
+wmic startup get Caption,COmmand,Location,User
+```
+
 ### autorunsc example
 
 autorunsc -accepteula -a * -s -c -h -vr > \\siftworksation\cases\Response\10.1.1.1-arun.csv
@@ -105,4 +114,6 @@ Examples Syntax:
     EvtxECmd.exe -f "C:\Temp\Application.evtx" --csv "c:\temp\out" --csvf MyOutputFile.csv
     EvtxECmd.exe -f "C:\Temp\Application.evtx" --csv "c:\temp\out"
     EvtxECmd.exe -f "C:\Temp\Application.evtx" --json "c:\temp\jsonout"
+    evtxecmd -f C:\Windows\system32\winevt\logs\Security.evtx --csv C:\Temp\event-logs --csvf security.csv
+
 ```
