@@ -47,9 +47,13 @@ autorunsc.exe /accepteula -a * -c -h -s '*' -nobanner
 
 ### Kansa examples:
 
-.\kansa.ps1 -TargetList .\hostlist -Pushbin
-.\kansa.ps1 -OutputPath .\Output\ -TargetList .\hostlist -TargetCount 250 -Verbose -Pushbin
 
+`.\kansa.ps1 -TargetList .\hostlist -Pushbin`
+`.\kansa.ps1 -OutputPath .\Output\ -TargetList .\hostlist -TargetCount 250 -Verbose -Pushbin`
+
+Kansa project uses this capability to scale collection.  Entire event logs can be collected using commands like the following:
+
+`(Get-WmiObject -Class Win32_NTEventlogFile | Where-Object LogfileName -EQ 'System').BackupEventlog(‘G:\System.evtx')`
 ### enumerate autorun files in a directory - Kansa Script
 
     Get-ASEPImagePathLaunchStringMD5UnsignedStack.ps1 > output.csv
