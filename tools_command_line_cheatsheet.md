@@ -134,3 +134,11 @@ Examples Syntax:
     EvtxECmd.exe -f "C:\Temp\Application.evtx" --json "c:\temp\jsonout"
     evtxecmd -f C:\Windows\system32\winevt\logs\Security.evtx --csv C:\Temp\event-logs --csvf security.csv
 ```
+### PowerShell can be used to collect and filter logs
+```
+Get-WinEvent -ComputerName for remote collection
+Get-WinEvent -Logname for local events
+Get-WinEvent -Path for archived log files
+Get-WinEvent -FilterHashtable @{Logname=“Security";id=4624} | Where {$_.Message -match “spsql"}
+Get-WinEvent -FilterHashtable @{Path="C:\Path-To-Exported\Security*.evtx“ ;id=5140} | Where {$_.Message -match "\\Admin\$"}
+```
