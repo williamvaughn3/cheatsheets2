@@ -26,7 +26,7 @@ wmic qfe get Caption,Description,HotFixID,InstalledOn
 wmic startup get Caption,COmmand,Location,User
 ```
 
-### WMIC Priv Esc (from powerup.ps1)
+#### WMIC Priv Esc (from powerup.ps1)
 ```
 #find unquoted services set to auto‐start
 wmic service get name,displayname,pathname,startmode | findstr /i "Auto" | findstr /i /v "C:\Windows\\" |findstr /i/v"""
@@ -35,6 +35,8 @@ $Owners=@{}Get‐WmiObject ‐Classwin32_process|Where‐Object{$_}|ForEach‐Ob
 #find all paths to service.exe's that have a space in the path and aren't quoted
 $VulnServices=Get‐WmiObject ‐Classwin32_service|Where‐Object{$_} | Where‐Object {($_.pathname ‐ne$null) ‐and ($_.pathname.trim() ‐ne"")} | Where‐Object {‐not $_.pathname.StartsWith("`"")} |Where‐Object{ ‐not $_.pathname.StartsWith("'")} |Where‐Object
 ```
+#### process call
+`wmic.exe PROCESS CALL CREATE \"C:\\Windows\\System32\\rundll32.exe \\\"C:\\Windows\\files.dat\\\" `
 ### autorunsc example
 ```
 autorunsc -accepteula -a * -s -c -h -vr > \\siftworksation\cases\Response\10.1.1.1-arun.csv
