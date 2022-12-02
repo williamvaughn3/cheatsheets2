@@ -172,8 +172,8 @@ vhdx and vhd
 
 `vol.py -f [image] --profile=[profile] [plugin]`
 
-#### Set an envviroment Variable to replace `-f [image]`
 ```
+# Set an envviroment Variable to replace `-f [image]`
 function SetVsrc(){
  export VOLATILITY_LOCATION=$1
  }
@@ -181,4 +181,20 @@ function SetVsrc(){
  SetVsrc Myfile.mem
  vol.py --profile=Win10x64 pslist
 
+ unset VOLATILITY_LOCATION
 ```
+
+#### Options:
+
+ `-h with plugin to get details`
+ 
+> vol.py malfind -h 
+    -D Dump_Dir, --dump-dir=DUMP_DIR, (dir in which to dump exe files)
+    -Y Yara_Rules, --yara-rules=YARA_RLES (use rules as well as finding injected code)
+    -K, --Kernal scan kernal modules
+
+##### see profiles and registered objects, use `--info`
+###### availabile plugins located in:
+` /usr/local/src/Volatility/volatility/plugins/ `
+
+
