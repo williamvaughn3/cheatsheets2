@@ -1,6 +1,8 @@
 # 
-# CheatSheet for windows forensics stuff
-#
+# ---- CheatSheet for windows forensics stuff ----  
+
+
+
 #### Windows Management Instrumentation CLI:
 `wmic /node:\<remote-IP> /user:\<admin acct>`
 #### Get auto-start processes
@@ -154,3 +156,12 @@ tdest
 
 vhdx and vhd
     Creates a VHDX virtual hard drive from the contents of --tdest. debugWhen true, enables debug messages.
+```
+
+### Windows Memory Aquisition Tools
+
+<li> WinPMEM:  https://github.com/Velocidex/c-aff4/releases
+<li> DumpIt:  http://www.comae.io
+<li> F-Response and SANS SIFT  www.f-response.com
+<li> Belkasoft Live RAM Capturer  forensic.belkasoft.com/en/am-capturer
+<li> MagnetForensics Ram Capture  magnetforensics.com/free-tool-magnet-ram-capture
