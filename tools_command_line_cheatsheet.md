@@ -174,11 +174,12 @@ vhdx and vhd
 
 #### Set an envviroment Variable to replace `-f [image]`
 ```
-    function SetVile(){
-    export VFILE=$1
-    export VOLATILITY_LOCATION=$VFILE
-    }
-    
-    vol.py --profile=Win10x64 pslist
+function SetVsrc(){
+ export VFILE=$1
+ export VOLATILITY_LOCATION=$VFILE
+ }
+ 
+ SetVsrc Myfile.mem
+ vol.py --profile=Win10x64 pslist
 
 ```
