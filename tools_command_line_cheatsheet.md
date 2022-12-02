@@ -174,11 +174,11 @@ vhdx and vhd
 
 #### Set an envviroment Variable to replace `-f [image]`
 ```
-echo 'alias setVOL_LOC=`echo "Enter File to load in Volatility:";read VFILE; export VOLATILITY_LOCATION=$VFILE`' >> ~/.bashrc
-source ~/.bashrc
-
-setVOL_LOC
-Enter File to load in Volatility: MYFILE
-vol.py --profile=Win10x64 pslist
+    function SetVile(){
+    export VFILE=$1
+    export VOLATILITY_LOCATION=$VFILE
+    }
+    
+    vol.py --profile=Win10x64 pslist
 
 ```
