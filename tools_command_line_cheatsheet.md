@@ -175,8 +175,7 @@ vhdx and vhd
 #### Set an envviroment Variable to replace `-f [image]`
 ```
 function SetVsrc(){
- export VFILE=$1
- export VOLATILITY_LOCATION=$VFILE
+ export VOLATILITY_LOCATION=$1
  }
  
  SetVsrc Myfile.mem
