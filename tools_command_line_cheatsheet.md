@@ -165,3 +165,20 @@ vhdx and vhd
 <li> Belkasoft Live RAM Capturer  forensic.belkasoft.com/en/am-capturer
 <li> MagnetForensics Ram Capture  magnetforensics.com/free-tool-magnet-ram-capture
 
+# 
+# Volatility
+## https://code.google.com/p/volatility/wiki/CommandReference23
+## Powerful Memory Analysis Framework with crowd source plugins
+
+`vol.py -f [image] --profile=[profile] [plugin]`
+
+#### Set an envviroment Variable to replace `-f [image]`
+```
+echo 'alias setVOL_LOC=`echo "Enter File to load in Volatility:";read VFILE; export VOLATILITY_LOCATION=$VFILE`' >> ~/.bashrc
+source ~/.bashrc
+
+setVOL_LOC
+Enter File to load in Volatility: MYFILE
+vol.py --profile=Win10x64 pslist
+
+```
