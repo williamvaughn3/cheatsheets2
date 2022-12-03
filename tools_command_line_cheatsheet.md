@@ -84,7 +84,7 @@ AmcacheParser.exe -f "C:\Temp\amcache\AmcacheWin10.hve" --csv C:\temp
 ```
 # <b>Appcompatprocessor.py </b>
 ### Syntax Examples
-
+```
 stacking by file path and file name
 `./AppCompatProcessor.py ./database.db stack "filePath" "fileName like '%servicehost.exe'"`
 stacking by filepath
@@ -103,6 +103,8 @@ Will find files for some attackers that regularly screwed the trademark symbol o
 `./AppCompatProcessor.py ./test-AmCache.db fsearch Product -F "Microsoft@"`
 find by producet
 `./AppCompatProcessor.py ./test-AmCache.db fsearch Product -F "Microsoft@"`
+```
+
 ##### also see the regex options and other modules
 
 # <b>Evtxcmd</b>
