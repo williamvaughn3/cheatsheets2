@@ -164,10 +164,11 @@ function SetVsrc(){
 #### Options:
 
  `-h with plugin to get details`
-```vol.py malfind -h
+```
+vol.py malfind -h
     -D Dump_Dir, --dump-dir=DUMP_DIR, (dir in which to dump exe files)
-     -Y Yara_Rules, --yara-rules=YARA_RLES (use rules as well as finding injected code)
-     -K, --Kernal scan kernal modules
+    -Y Yara_Rules, --yara-rules=YARA_RLES (use rules as well as finding injected code)
+    -K, --Kernal scan kernal modules
 ```
 ##### see profiles and registered objects, use `--info`
 ###### availabile plugins located in:
