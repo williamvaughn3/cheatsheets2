@@ -84,6 +84,7 @@ AmcacheParser.exe -f "C:\Temp\amcache\AmcacheWin10.hve" --csv C:\temp
 ```
 # <b>Appcompatprocessor.py </b>
 ### Syntax Examples
+
 stacking by file path and file name
 `./AppCompatProcessor.py ./database.db stack "filePath" "fileName like '%servicehost.exe'"`
 stacking by filepath
