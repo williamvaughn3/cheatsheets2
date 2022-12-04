@@ -217,6 +217,7 @@ https://github.com/ufrisk/MemProcFS<br>
 <b>Usage:</b>
 > Start MemProcFS from the command line - possibly by using one of the examples below.
 > Or register the memory dump file extension with MemProcFS.exe so that the file system is automatically mounted when double-clicking on a memory dump file!
+
 <b> Examples: </b>
 - mount the memory dump file as default M: <br>`memprocfs.exe -device c:\temp\win10x64-dump.raw`
 - mount the memory dump file as default M: with extra verbosity: <br>`memprocfs.exe -device c:\temp\win10x64-dump.raw -v`
