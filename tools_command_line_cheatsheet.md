@@ -1,5 +1,4 @@
-#
-# <b><b>CheatSheet for windows forensics stuff</b></b>
+# <b><b>Tool-list / CheatSheet for windows forensics stuff</b></b>
 ## WMI CLI:
 #### Syntax uses: `wmic /node:\<remote-IP> /user:\<admin acct>`
 Get auto-start processes
@@ -70,11 +69,11 @@ find stuff in files matching *SvcAll.csv - Kansa Script
 
 >     Enter the fields you want to GROUP BY, one per line.
 >     Enter "quit" when finished:  PathName
-#### Once finding something interesting, use timeline explorer to view the results
-<i> <b> Use select-string to find which system it is on in the csv file, pipe out to gridview or tableview </b></i>
-    Select-String "string" *SvcAll.csv
-        .\Disk\Get-TempDirListing.ps1 | Out-GridView
-    .\Log\Get-LogWinEvent.ps1 security | Out-GridView
+<br><b>** Once finding something interesting, use timeline explorer to view the results **</b><br><br>
+<b> Use select-string to find which system it is on in the csv file, pipe out to gridview or tableview </b>
+>    Select-String "string" *SvcAll.csv
+>    .\Disk\Get-TempDirListing.ps1 | Out-GridView
+>    .\Log\Get-LogWinEvent.ps1 security | Out-GridView
 # <b>Amacheparser </b>
 ### Syntax Examples
 ```
@@ -180,17 +179,44 @@ vol.py malfind -h
     -K, --Kernal scan kernal modules
 ```
 ##### see profiles and registered objects, use `--info`
-###### availabile plugins located in:
-` /usr/local/src/Volatility/volatility/plugins/ `
+
+<b>View availabile plugins located in:
+> /usr/local/src/Volatility/volatility/plugins/</b><br>
+
+<b>More Examples:</b>  
+
+<br>
 
 Output Processes to dot file viewer or image file
-`vol.py -f <memory.img> --profile=<profile> pstree --output=dot --output-file=pstree.dot`
+> vol.py -f <memory.img> --profile=<profile> pstree --output=dot --output-file=pstree.dot
 
 dlllist plugin 
 > vol.py -f memory.img --profile=Win10x64_16299 dlllist -p 6000
 
-getsids plugin
+- getsids plugin
 > vol.py -f memory.img --profile=Win10x64_16299 getsids -p 6000
-
 Handles Plugin, Supress and look at Type File and Key(reg)
 > vol.py -f memory.img --profile=Win10x64_16299 handles -s -t File,Key -p 6000
+
+
+MemProcFS
+=========
+<b>Author: Ulf Frisk</b>
+https://github.com/ufrisk/MemProcFS<br>
+> MemProcFS is an easy and convenient way of viewing physical memory as files in a virtual file system.  
+>
+> Easy trivial point and click memory analysis without the need for complicated commandline arguments! Access memory content and artifacts via files in a mounted virtual file system or via a feature rich application library to include in your own projects!
+
+<b>Usage:</b>
+> Start MemProcFS from the command line - possibly by using one of the examples below.
+> Or register the memory dump file extension with MemProcFS.exe so that the file system is automatically mounted when double-clicking on a memory dump file!
+<b> Examples: </b>
+- mount the memory dump file as default M: <br>`memprocfs.exe -device c:\temp\win10x64-dump.raw`
+- mount the memory dump file as default M: with extra verbosity: <br>`memprocfs.exe -device c:\temp\win10x64-dump.raw -v`
+- mount the memory dump file as default M: and start forensics mode: <br>`memprocfs.exe -device c:\temp\win10x64-dump.raw -forensic 1`
+- mount the memory dump file as /home/pi/mnt/ on Linux: <br>`./memprocfs -mount /home/pi/linux -device /dumps/win10x64-dump.raw`
+- mount the memory dump file as S: <br>`memprocfs.exe -mount s -device c:\temp\win10x64-dump.raw`
+- mount live target memory, in verbose read-only mode, with DumpIt in /LIVEKD mode: <br>`DumpIt.exe /LIVEKD /A memprocfs.exe /C "-v"`
+- mount live target memory, in read-only mode, with WinPMEM driver: <br>`memprocfs.exe -device pmem`
+- mount live target memory, in read/write mode, with PCILeech FPGA memory acquisition device: <br>`memprocfs.exe -device fpga -memmap auto`
+- mount a memory dump with a corresponding page files: <br>`memprocfs.exe -device unknown-x64-dump.raw -pagefile0 pagefile.sys -pagefile1 swapfile.sys`
