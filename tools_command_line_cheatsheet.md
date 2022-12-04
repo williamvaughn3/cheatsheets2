@@ -84,27 +84,33 @@ AmcacheParser.exe -f "C:\Temp\amcache\AmcacheWin10.hve" --csv C:\temp
 ```
 # <b>Appcompatprocessor.py </b>
 ### Syntax Examples
-```
-stacking by file path and file name
-`./AppCompatProcessor.py ./database.db stack "filePath" "fileName like '%servicehost.exe'"`
-stacking by filepath
-`./appcompatprocessor.py ./database.db stack fsearch Filepath -f "ProgramData"`
-Will search the FileName field for anything that contains 'cmd.exe'
-`./AppCompatProcessor.py ./database.db fsearch FileName -F "cmd.exe"`
-Will search the FileName field for anything that exactly matches 'cmd.exe'
-`./AppCompatProcessor.py ./database.db fsearch FileName -F "=cmd.exe"`
-Will find files whose size contains "4096"
-`./AppCompatProcessor.py ./database.db fsearch Size -F "4096"`
-Will find files whose size _is_ "4096"
-`./AppCompatProcessor.py ./database.db fsearch Size -F "=4096"`
-Will find files whose size is bigger than 4096 bytes (and has Size data of course: XP appcompat or AmCache data)
-`./AppCompatProcessor.py ./database.db fsearch Size -F ">4096"`
-Will find files for some attackers that regularly screwed the trademark symbol on the versioning information on their tools.
-`./AppCompatProcessor.py ./test-AmCache.db fsearch Product -F "Microsoft@"`
-find by producet
-`./AppCompatProcessor.py ./test-AmCache.db fsearch Product -F "Microsoft@"`
-```
 
+stacking by file path and file name
+>./AppCompatProcessor.py ./database.db stack "filePath" "fileName like '%servicehost.exe'"
+
+stacking by filepath
+>./appcompatprocessor.py ./database.db stack fsearch Filepath -f "ProgramData"
+
+Will search the FileName field for anything that contains 'cmd.exe'
+>./AppCompatProcessor.py ./database.db fsearch FileName -F "cmd.exe"
+
+Will search the FileName field for anything that exactly matches 'cmd.exe'
+>./AppCompatProcessor.py ./database.db fsearch FileName -F "=cmd.exe"
+
+Will find files whose size contains "4096"
+>./AppCompatProcessor.py ./database.db fsearch Size -F "4096"
+
+Will find files whose size _is_ "4096"
+>./AppCompatProcessor.py ./database.db fsearch Size -F "=4096"
+
+Will find files whose size is bigger than 4096 bytes (and has Size data of course: XP appcompat or AmCache data)
+>./AppCompatProcessor.py ./database.db fsearch Size -F ">4096"
+
+Will find files for some attackers that regularly screwed the trademark symbol on the versioning information on their tools.
+> ./AppCompatProcessor.py ./test-AmCache.db fsearch Product -F "Microsoft@"
+
+find by producet
+>./AppCompatProcessor.py ./test-AmCache.db fsearch Product -F "Microsoft@"
 ##### also see the regex options and other modules
 
 # <b>Evtxcmd</b>
@@ -177,5 +183,14 @@ vol.py malfind -h
 ###### availabile plugins located in:
 ` /usr/local/src/Volatility/volatility/plugins/ `
 
+Output Processes to dot file viewer or image file
+`vol.py -f <memory.img> --profile=<profile> pstree --output=dot --output-file=pstree.dot`
 
+dlllist plugin 
+> vol.py -f memory.img --profile=Win10x64_16299 dlllist -p 6000
 
+getsids plugin
+> vol.py -f memory.img --profile=Win10x64_16299 getsids -p 6000
+
+Handles Plugin, Supress and look at Type File and Key(reg)
+> vol.py -f memory.img --profile=Win10x64_16299 handles -s -t File,Key -p 6000
