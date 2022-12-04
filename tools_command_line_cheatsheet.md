@@ -1,16 +1,16 @@
 # <b><b>Tool-list / CheatSheet for windows forensics stuff</b></b>
 ## WMI CLI:
-#### Syntax uses: `wmic /node:\<remote-IP> /user:\<admin acct>`
-Get auto-start processes
+##### Syntax uses: `wmic /node:\<remote-IP> /user:\<admin acct>`
+- Get auto-start processes
 `wmic /node:10.1.1.1 startup list full`
-Remote process list:
+- Remote process list:
 `wmic /node:10.1.1.1 process get`
-Network configuration
+- Network configuration
 `wmic /node:10.1.1.1 nicconfig get`
-Spot executables running from strange locations:
+- Spot executables running from strange locations:
 `wmic PROCESS WHERE "NOT ExecutablePath LIKE '%Windows%'" GET ExecutablePath`
 
-#### Possible WMIC recon
+##### Possible WMIC recon
 ```
 wmic process get CSName,Description,ExecutablePath,ProcessId
  wmic useraccount list full; wmic group list full; wmic netuse list full;
@@ -26,38 +26,37 @@ $Owners=@{}Get‐WmiObject ‐Classwin32_process|Where‐Object{$_}|ForEach‐Ob
 #find all paths to service.exe's that have a space in the path and aren't quoted
 $VulnServices=Get‐WmiObject ‐Classwin32_service|Where‐Object{$_} | Where‐Object {($_.pathname ‐ne$null) ‐and ($_.pathname.trim() ‐ne"")} | Where‐Object {‐not $_.pathname.StartsWith("`"")} |Where‐Object{ ‐not $_.pathname.StartsWith("'")} |Where‐Object
 ```
-#### process call
-`wmic.exe PROCESS CALL CREATE \"C:\\Windows\\System32\\rundll32.exe \\\"C:\\Windows\\files.dat\\\" `
+### process call
+> wmic.exe PROCESS CALL CREATE \"C:\\Windows\\System32\\rundll32.exe  "C:\\Windows\\files.dat\\\" 
 # <b>autorunsc </b>
 ### Syntax examples
 ```
 autorunsc -accepteula -a * -s -c -h -vr > \\siftworksation\cases\Response\10.1.1.1-arun.csv
-autorunsc.exe /accepteula -a * -c -h -s '*' -nobanner
+ autorunsc.exe /accepteula -a * -c -h -s '*' -nobanner
 ```
 *Validate if code/file is signed by valid/known publisher; May need to reset columns in timeline explorer (under tools)*
 # <b>Kansa </b>
 Syntax examples:
 
+> .\kansa.ps1 -TargetList .\hostlist -Pushbin
+> .\kansa.ps1 -OutputPath .\Output\ -TargetList .\hostlist -TargetCount 250 -Verbose -Pushbin
 
-`.\kansa.ps1 -TargetList .\hostlist -Pushbin`
-`.\kansa.ps1 -OutputPath .\Output\ -TargetList .\hostlist -TargetCount 250 -Verbose -Pushbin`
 Kansa project uses this capability to scale collection.  Entire event logs can be collected using commands like the following:
-`(Get-WmiObject -Class Win32_NTEventlogFile | Where-Object LogfileName -EQ 'System').BackupEventlog(‘G:\System.evtx')`
-### enumerate autorun files in a directory - Kansa Script
+> (Get-WmiObject -Class Win32_NTEventlogFile | Where-Object LogfileName -EQ 'System').BackupEventlog(‘G:\System.evtx')
+
+Enumerate autorun files in a directory - Kansa Script:
 ```
     Get-ASEPImagePathLaunchStringMD5UnsignedStack.ps1 > output.csv
-    Select-String "<process name>"  *Autorunsc.csv
-        Select-String "perfmonsvc64.exe" *Autorunsc.csv
+     Select-String "<process name>"  *Autorunsc.csv
+     Select-String "perfmonsvc64.exe" *Autorunsc.csv
 ```
-### use timeline explorer to view results
-> filter by least occurance count and use powershell select-string to find which system
+*Use timeline explorer to view results - filter by least occurance count and use powershell select-string to find which system*
 
-Example Below:
-find stuff in files matching *SvcAll.csv - Kansa Script
-```
-    .\Get-LogparserStack.ps1 -FilePattern *SvcAll.csv -Delimiter "," -Direction asc -OutFile SvcAll-workstation-stack.csv
-```
-##### Will be returned output and optional sort / selection criterea:
+<b>Example Below:</b>
+Find stuff in files matching *SvcAll.csv - Kansa Script
+>.\Get-LogparserStack.ps1 -FilePattern *SvcAll.csv -Delimiter "," -Direction asc -OutFile SvcAll-workstation-stack.csv
+
+##### Output and optional sort / selection criterea:
 
 >     Enter the field to pass to COUNT():  Name
 
@@ -84,31 +83,31 @@ AmcacheParser.exe -f "C:\Temp\amcache\AmcacheWin10.hve" --csv C:\temp
 # <b>Appcompatprocessor.py </b>
 ### Syntax Examples
 
-stacking by file path and file name
+- <b>stacking by file path and file name</b>
 >./AppCompatProcessor.py ./database.db stack "filePath" "fileName like '%servicehost.exe'"
 
-stacking by filepath
+- <b>stacking by filepath</b>
 >./appcompatprocessor.py ./database.db stack fsearch Filepath -f "ProgramData"
 
-Will search the FileName field for anything that contains 'cmd.exe'
+- <b>Will search the FileName field for anything that contains 'cmd.exe'</b>
 >./AppCompatProcessor.py ./database.db fsearch FileName -F "cmd.exe"
 
-Will search the FileName field for anything that exactly matches 'cmd.exe'
+- <b>Will search the FileName field for anything that exactly matches 'cmd.exe'</b>
 >./AppCompatProcessor.py ./database.db fsearch FileName -F "=cmd.exe"
 
-Will find files whose size contains "4096"
+- <b>Will find files whose size contains "4096"</b>
 >./AppCompatProcessor.py ./database.db fsearch Size -F "4096"
 
-Will find files whose size _is_ "4096"
+- <b>Will find files whose size _is_ "4096"</b>
 >./AppCompatProcessor.py ./database.db fsearch Size -F "=4096"
 
-Will find files whose size is bigger than 4096 bytes (and has Size data of course: XP appcompat or AmCache data)
+- <b>Will find files whose size is bigger than 4096 bytes (and has Size data of course: XP appcompat or AmCache data)
 >./AppCompatProcessor.py ./database.db fsearch Size -F ">4096"
 
-Will find files for some attackers that regularly screwed the trademark symbol on the versioning information on their tools.
+- <b>Will find files for some attackers that regularly screwed the trademark symbol on the versioning information on their tools.</b>
 > ./AppCompatProcessor.py ./test-AmCache.db fsearch Product -F "Microsoft@"
 
-find by producet
+- <b>Find by producet</b>
 >./AppCompatProcessor.py ./test-AmCache.db fsearch Product -F "Microsoft@"
 ##### also see the regex options and other modules
 
@@ -117,10 +116,10 @@ find by producet
 > yet another awesome tool by Eric Zimmerman.  A command line tool for parsing Windows Event Log (EVTX) files. It can be used to extract events from a single file or a directory of files. Can use to export events to CSV, JSON, or HTML.  Leverages the xpath with open/crowd sourced map files to make parsing much simplier.
 ### Examples Syntax:
 ```
-    EvtxECmd.exe -f "C:\Temp\Application.evtx" --csv "c:\temp\out" --csvf MyOutputFile.csv
-    EvtxECmd.exe -f "C:\Temp\Application.evtx" --csv "c:\temp\out"
-    EvtxECmd.exe -f "C:\Temp\Application.evtx" --json "c:\temp\jsonout"
-    evtxecmd -f C:\Windows\system32\winevt\logs\Security.evtx --csv C:\Temp\event-logs --csvf security.csv
+    evtxecmd -f "C:\Temp\Application.evtx" --csv "c:\temp\out" --csvf MyOutputFile.csv
+     evtxecmd -f "C:\Temp\Application.evtx" --csv "c:\temp\out"
+     evtxecmd -f "C:\Temp\Application.evtx" --json "c:\temp\jsonout"
+     evtxecmd -f C:\Windows\system32\winevt\logs\Security.evtx --csv C:\Temp\event-logs --csvf security.csv
 ```
 # <b>Get-WinEvent</b>
 ### PowerShell can be used to collect and filter logs
@@ -169,7 +168,7 @@ function SetVsrc(){
 
  unset VOLATILITY_LOCATION
 ```
-#### Options:
+##### Options:
 
  `-h with plugin to get details`
 ```
@@ -178,26 +177,34 @@ vol.py malfind -h
     -Y Yara_Rules, --yara-rules=YARA_RLES (use rules as well as finding injected code)
     -K, --Kernal scan kernal modules
 ```
-##### see profiles and registered objects, use `--info`
+<i>
+see profiles and registered objects, use `--info`
+</i><b>
+<br>
+<br>
+View availabile plugins located in:</b>
 
-<b>View availabile plugins located in:
 > /usr/local/src/Volatility/volatility/plugins/</b><br>
 
-<b>More Examples:</b>  
-
+More Examples:  
+--------------
 <br>
 
-Output Processes to dot file viewer or image file
+- <b>pstree</b> plugin- Output Processes to dot file viewer or image file
 > vol.py -f <memory.img> --profile=<profile> pstree --output=dot --output-file=pstree.dot
 
-dlllist plugin 
+
+- <b> dlllist </b> plugin
 > vol.py -f memory.img --profile=Win10x64_16299 dlllist -p 6000
 
-- getsids plugin
+- <b> getsids </b> plugin
 > vol.py -f memory.img --profile=Win10x64_16299 getsids -p 6000
-Handles Plugin, Supress and look at Type File and Key(reg)
+
+- <b> Handles </b> Plugin - Supress and look at Type File and Key(reg)
 > vol.py -f memory.img --profile=Win10x64_16299 handles -s -t File,Key -p 6000
 
+- <b> ssdt</b> plugin - find rootkit hooks
+> vol.py -f memory.img ssdt \| egrep -v '(ntoskrnl\|win32k) 
 
 MemProcFS
 =========
