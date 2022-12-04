@@ -193,9 +193,18 @@ More Examples:
 - <b>pstree</b> plugin- Output Processes to dot file viewer or image file
 > vol.py -f <memory.img> --profile=<profile> pstree --output=dot --output-file=pstree.dot
 
-
 - <b> dlllist </b> plugin
 > vol.py -f memory.img --profile=Win10x64_16299 dlllist -p 6000
+
+- <b>modscan/modules</b> plugins 
+> vol.py -f memory.img --profile=Win10x64_16299 modscan 
+> vol.py -f memory.img modules
+
+- <b>dlldump</b> output, dump the dll for process at PID 6000, base offset 01234567, also can use regex; (-r [string])
+> vol.py -f memory.img dlldump -p 6000 [-b 0x01234567 | -r string] --dump-dir=/dir/to/output2
+
+- <b>moddump </b> use -r regex, base offset -b, or dump all by omitting
+> vol.py -f memory.img moddump [-r string | -b 0x01234567] --dump-dir=/dir/to/dump/to
 
 - <b> getsids </b> plugin
 > vol.py -f memory.img --profile=Win10x64_16299 getsids -p 6000
@@ -211,6 +220,10 @@ More Examples:
 
 - <b> malfind </b> plugin -page_execute_readwrite, look for Executable PE codes
 > vol.py -f memory.mig --profile=Win10x64_16299 malfind | grep -B4 -A2 -ei 'MZ|ELF|NE|OMF' | grep process
+
+- <b> procdump</> plugin 
+> vol.py -f memory.img procdump --dump-dir=/dir/to/dump/to
+
 
  MemProcFS
 =========
