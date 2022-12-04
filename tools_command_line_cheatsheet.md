@@ -221,9 +221,20 @@ More Examples:
 - <b> malfind </b> plugin -page_execute_readwrite, look for Executable PE codes
 > vol.py -f memory.mig --profile=Win10x64_16299 malfind | grep -B4 -A2 -ei 'MZ|ELF|NE|OMF' | grep process
 
-- <b> procdump</> plugin 
+- <b> procdump</b> plugin, 
 > vol.py -f memory.img procdump --dump-dir=/dir/to/dump/to
 
+> Options:
+-p PID
+-o memory offset
+-n regex, used to find process name
+
+- <b> memdump</b> plugin, contains every mem section owned by process, strings analysis can proof useful.
+> vol.py -f memory.img memdump -p 6000 --dump-dir=/dir/to/dump/to
+
+> Options:
+-p PID
+-n regex, used to find process name
 
  MemProcFS
 =========
