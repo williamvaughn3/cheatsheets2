@@ -206,7 +206,13 @@ More Examples:
 - <b> ssdt</b> plugin - find rootkit hooks
 > vol.py -f memory.img ssdt \| egrep -v '(ntoskrnl\|win32k) 
 
-MemProcFS
+- <b> apihooks</b> plugin - more rootkit fun
+> vol.py -f memory.img apihooks
+
+- <b> malfind </b> plugin -page_execute_readwrite, look for Executable PE codes
+> vol.py -f memory.mig --profile=Win10x64_16299 malfind | grep -B4 -A2 -ei 'MZ|ELF|NE|OMF' | grep process
+
+ MemProcFS
 =========
 <b>Author: Ulf Frisk</b>
 https://github.com/ufrisk/MemProcFS<br>
