@@ -231,10 +231,22 @@ More Examples:
 
 - <b> memdump</b> plugin, contains every mem section owned by process, strings analysis can proof useful.
 > vol.py -f memory.img memdump -p 6000 --dump-dir=/dir/to/dump/to
+> strings -t d -e l /dir/to/dump/to/*.dmp
 
 > Options:
 -p PID
 -n regex, used to find process name
+
+- <b> dumpfiles</b> plugin, 
+> vol.py -f memory.img dumpfiles -n -i -r \\.dat -D .
+
+> Options:
+-D / --dump-dir=path
+-Q phys. offset of File_Object
+-r regular expression (-r) 
+-i case insensitive
+-n original filename in output
+
 
  MemProcFS
 =========
