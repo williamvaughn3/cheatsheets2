@@ -237,7 +237,10 @@ More Examples:
 -p PID
 -n regex, used to find process name
 
-- <b> dumpfiles</b> plugin, 
+- <b> filescan</b> plugin, compliments dumpfiles
+> vol.py -f memory.img filescan
+
+- <b> dumpfiles</b> plugin 
 > vol.py -f memory.img dumpfiles -n -i -r \\.dat -D .
 
 > Options:
