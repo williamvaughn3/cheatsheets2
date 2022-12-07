@@ -273,3 +273,41 @@ https://github.com/ufrisk/MemProcFS<br>
 - mount live target memory, in read-only mode, with WinPMEM driver: <br>`memprocfs.exe -device pmem`
 - mount live target memory, in read/write mode, with PCILeech FPGA memory acquisition device: <br>`memprocfs.exe -device fpga -memmap auto`
 - mount a memory dump with a corresponding page files: <br>`memprocfs.exe -device unknown-x64-dump.raw -pagefile0 pagefile.sys -pagefile1 swapfile.sys`
+
+YARA 
+-----
+Originaly created by VirusTotal to classify malware samples.
+Syntax
+<br>
+
+- Preconfigured Rules file
+> yara64.exe -C compiled-rules-file <file or directory>
+
+- Options
+```
+yara64.exe -[C|c|f|r|p] rules <file/dir>
+ 
+ [Useful Options]
+    -C:Load pre-compiled rules
+    -c:Print only number of matches
+    -f:Fast matching mode-w:Disable warnings
+    -r:Recursively search directories
+    -p <threads>:Use specified number of threads during scanning
+```
+To use a rules file, you can only specify one static file.  Must
+utilize an index file if utilizing signatures from multilpe files.
+
+Index file example:
+    
+    # Common_APT1_Custom.rules
+    # Source sig files to include
+    include "<dir>\000_common_rules.yar"
+    include "<dir>\APT_APT1.yar"
+    include "<dir>\custom_signatures.yar"
+
+
+Many precompiled rules exist already:
+- Yara Rules Github:
+> https://github.com/Yara-Rules/rules
+
+
