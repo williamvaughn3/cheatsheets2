@@ -294,10 +294,10 @@ yara64.exe -[C|c|f|r|p] rules <file/dir>
     -r:Recursively search directories
     -p <threads>:Use specified number of threads during scanning
 ```
-To use a rules file, you can only specify one static file.  Must
-utilize an index file if utilizing signatures from multilpe files.
-
-Index file example:
+</br>
+#### To use a rules file, you can only specify one static file.  Must <br>utilize an index file if utilizing signatures from multilpe files.
+</br>
+<b> Index file example:</b>
     
     # Common_APT1_Custom.rules
     # Source sig files to include
@@ -305,9 +305,35 @@ Index file example:
     include "<dir>\APT_APT1.yar"
     include "<dir>\custom_signatures.yar"
 
+<b>Many precompiled rules exist already:</b>
 
-Many precompiled rules exist already:
-- Yara Rules Github:
+> Yara Rules Github:
 > https://github.com/Yara-Rules/rules
 
+Density Scout
+-------------
+> Author: Christian Wojner @Cert Aus.
+> https://www.cert.at/en/downloads/software/software-densityscout
 
+<b>Purpose</b>: Find Suspicous Files
+
+<br>
+<b>Syntax:</b>
+```
+densityscout -pe -r -p 0.1 -o results.txt <directory-of-exe>
+
+ [Useful Options]
+    -a:Show errors and empties, too
+    -d:Just output data
+    -l:Lower than the given density
+    -n:Print number lines
+    -m:Mode ABS (default) or CHI (for filesize > 100 Kb)
+    -o file:File to write output to
+    -p density:Immediately print if lower than the given density
+    -r: Walk recursively
+    -s suffix(es): Filetype(s) (i.e., dll or exe,...)
+    -S suffix(es): Filetype(s) to ignore (i.e., dll or dll,exe)
+    -pe: Include all portable executables by magic number
+    -PE: Ignore all portable executables by magic number
+ 
+```
