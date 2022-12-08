@@ -404,8 +404,9 @@ MFTECmd.exe -f "C:\Temp\SomeMFT" --csv "c:\temp\out"MFTECmd.exe -f "C:\Temp\Some
 MFTECmd.exe -f "C:\Temp\SomeMFT" --body "c:\temp\bout" --bdl cMFTECmd.exe -f "C:\Temp\SomeMFT" --de 5-5
 ```
 
-fls
+TSK (the Slueth Kit tools)
 -----
+
 fls tool within the TSK (the slueth kit) suite is designed to extract filename and metadata information for files
 
 ```
@@ -418,4 +419,17 @@ Useful Options for fls
 -p:  Display full path when recursing
 -m:  Display in timeline bodyfile format
 -s <sec>: Timeskew correction for system in seconds
+```
+
+<b>MacTime</b>
+> tool that tases a file and parses it to present it to a readable format
+
+```
+mactime [options] -d -b bodyfile -z timezone > timeline.csv
+
+[Useful Options for mactime]
+-b: Bodyfile location (data file) 
+-y: Dates are displayed in ISO 8601 format
+-z: Specify the time zone (see time zone chart)
+-d: Comma-delimited format Optional: Date Range (yyyy-mm-dd..yyyy-mm-dd)Example: 2020-01-01..2020-6-01
 ```
