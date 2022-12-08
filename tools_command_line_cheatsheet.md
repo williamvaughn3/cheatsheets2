@@ -406,9 +406,10 @@ MFTECmd.exe -f "<file>" --body "<dir>" --bodyf mft.body --blf --bdl C:
 --blf = When true, use LF vs CRLF for newlines. Default is FALSE
 ```
 
-```
+
 
 <b>Examples: </b> 
+
 ```
 MFTECmd.exe -f "C:\Temp\SomeMFT" --csv "c:\temp\out" --csvf MyOutputFile.csv 
 MFTECmd.exe -f "C:\Temp\SomeMFT" --csv "c:\temp\out"MFTECmd.exe -f "C:\Temp\SomeMFT" --json "c:\temp\jsonout"
