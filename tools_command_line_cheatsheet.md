@@ -403,3 +403,19 @@ MFTECmd.exe -f "C:\Temp\SomeMFT" --csv "c:\temp\out" --csvf MyOutputFile.csv
 MFTECmd.exe -f "C:\Temp\SomeMFT" --csv "c:\temp\out"MFTECmd.exe -f "C:\Temp\SomeMFT" --json "c:\temp\jsonout"
 MFTECmd.exe -f "C:\Temp\SomeMFT" --body "c:\temp\bout" --bdl cMFTECmd.exe -f "C:\Temp\SomeMFT" --de 5-5
 ```
+
+fls
+-----
+fls tool within the TSK (the slueth kit) suite is designed to extract filename and metadata information for files
+
+```
+Usage: fls [options] image [inode]
+
+Useful Options for fls
+
+-d:  Display deleted entries only
+-r:  Recurse on directorie
+-p:  Display full path when recursing
+-m:  Display in timeline bodyfile format
+-s <sec>: Timeskew correction for system in seconds
+```
