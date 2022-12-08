@@ -466,6 +466,12 @@ Plaso / log2timeline.py
 - <b>Filter Files </b></br>        `log2timeline.py  -f filter_windows.txt  plaso.dump  <target>`
 
 > -f FILTER_FILE, --file_filter FILTER_FILE, --file-filter FILTER_FILE
->  Filters and out put are in Yaml or Text based 
+ Filters and output are in Yaml or Text based 
 > 
 > https://plaso.readthedocs.io/en/latest/sources/user/Collection-Filters.html
+
+<b>pinfo.py -v plaso.dump</b>
+> Will provide you information on the plaso db file, inc. internal metadata, what was parsed how it was parsed (plugins/filters), preproc. info, ect.
+
+<b>psort.py</b>
+> psort.py --output-time-zone 'UTC' -o [l2tcsv|elastic] -w [filename] plaso.dump FILTER date [ < or > ] datetime('2000-01-01T00:00:00')
