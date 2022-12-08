@@ -337,7 +337,10 @@ densityscout -pe -r -p 0.1 -o results.txt <directory-of-exe>
  -S suffix(es): Filetype(s) to ignore (i.e., dll or dll,exe)
  -pe: Include all portable executables by magic number
  -PE: Ignore all portable executables by magic number
+
 ```
+
+
 
 
 sigcheck.exe
@@ -358,6 +361,7 @@ sigcheck.exesigcheck [options] file or directory
 -s Recurse subdirectories
 -u Show files that are unknown if VirusTotal check is enabled; otherwise, show only unsigned files.-v[rs] Query VirusTotal for malware based on file hash. Add 'r' to open reports for files with non-zero detection. Files reported as not previously scanned will be uploaded to VirusTotal if the 's' option is specified. 
 -t[u][v] Dump contents of specified certificate store ('*' for all stores). Specify -tu to query the user store (machine store is the default).  Append '-v' to have Sigcheck download the trusted Microsoft root certificate list and only output valid certificates not rooted to a certificate on that list. If the site is not accessible, authrootstl.cab or authroot.stl in the current directory are used instead, if present.
+
 ```
 
 Capa
