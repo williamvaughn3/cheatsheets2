@@ -438,6 +438,7 @@ Plaso / log2timeline.py
 ---------------
 > Author: Kristinn Guðjónsson
 > Artifact Extraction to create timelines from multiple sources
+> https://github.com/log2timeline/plaso/tree/main/data
 > https://plaso.readthedocs.io/en/latest/
 
 <i>log2timeline.py [STORAGE FILE] [SOURCE]</i>
@@ -449,7 +450,10 @@ Plaso / log2timeline.py
 - <b>Physical Device </b></br>     `log2timeline.py /dir/file.dump /dev/sdd`
 - <b>Volume(partitoin)</b></br>    `log2timeline.py --partition 2 /dir/file.dump /dir/file.dd`
 - <b>Triage Folder </b></br>       `log2timeline.py /dir/file.dump /triage-output/`
-- <b>Filter Files </b></br>        `log2timeline.py  -f filter_windows.txt  plaso.dump  <target>`
-> -f FILTER_FILE, --file_filter FILTER_FILE, --file-filter FILTER_FILE
 - <b>Parser Presets</b></br>       `log2timeline.py --parsers "win7,!filestat" plaso.dump <target>`
-> Yaml or Text based
+- <b>Filter Files </b></br>        `log2timeline.py  -f filter_windows.txt  plaso.dump  <target>`
+
+> -f FILTER_FILE, --file_filter FILTER_FILE, --file-filter FILTER_FILE
+>  Filters and out put are in Yaml or Text based 
+> 
+> https://plaso.readthedocs.io/en/latest/sources/user/Collection-Filters.html
