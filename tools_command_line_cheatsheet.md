@@ -382,8 +382,10 @@ capa [options] <file>
 MFTECmd
 -------
 
+> Master File Table, Filesystem Journals and NTFS System Files tool to extract data
 > author: E.Zimmerman
-> 
+> https://github.com/EricZimmerman/MFTECmd
+
 
 ```
 MFTECmd.exe -f "<file>" --body "<dir>" --bodyf mft.body --blf --bdl C:
