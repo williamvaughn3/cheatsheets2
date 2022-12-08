@@ -393,6 +393,9 @@ MFTECmd
 
 
 ```
+
+```
+
 ```
 MFTECmd.exe -f "<file>" --body "<dir>" --bodyf mft.body --blf --bdl C:
 
@@ -401,6 +404,8 @@ MFTECmd.exe -f "<file>" --body "<dir>" --bodyf mft.body --blf --bdl C:
 --body "<dir>"  = Dir to save CSV
 --bodyf name  = Filename to save CSV--bdl name = Drive letter (C, D, etc.) to use with bodyfile
 --blf = When true, use LF vs CRLF for newlines. Default is FALSE
+```
+
 ```
 
 <b>Examples: </b> 
