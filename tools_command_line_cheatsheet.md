@@ -319,7 +319,9 @@ Density Scout
 
 <br>
 <b>Syntax:</b>
+
 ```
+
 densityscout -pe -r -p 0.1 -o results.txt <directory-of-exe>
 
  [Useful Options]
@@ -335,7 +337,6 @@ densityscout -pe -r -p 0.1 -o results.txt <directory-of-exe>
  -S suffix(es): Filetype(s) to ignore (i.e., dll or dll,exe)
  -pe: Include all portable executables by magic number
  -PE: Ignore all portable executables by magic number
- 
 ```
 
 
