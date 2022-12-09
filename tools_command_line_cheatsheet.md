@@ -191,65 +191,78 @@ More Examples:
 <br>
 
 - <b>pstree</b> plugin- Output Processes to dot file viewer or image file
-> vol.py -f <memory.img> --profile=<profile> pstree --output=dot --output-file=pstree.dot
+`vol.py -f <memory.img> --profile=<profile> pstree --output=dot --output-file=pstree.dot`
 
 - <b> dlllist </b> plugin
-> vol.py -f memory.img --profile=Win10x64_16299 dlllist -p 6000
+`vol.py -f memory.img --profile=Win10x64_16299 dlllist -p 6000`
 
 - <b>modscan/modules</b> plugins 
-> vol.py -f memory.img --profile=Win10x64_16299 modscan 
-> vol.py -f memory.img modules
+`vol.py -f memory.img --profile=Win10x64_16299 modscan `
+`vol.py -f memory.img modules`
 
 - <b>dlldump</b> output, dump the dll for process at PID 6000, base offset 01234567, also can use regex; (-r [string])
-> vol.py -f memory.img dlldump -p 6000 [-b 0x01234567 | -r string] --dump-dir=/dir/to/output2
+`vol.py -f memory.img dlldump -p 6000 [-b 0x01234567 | -r string] --dump-dir=/dir/to/output2`
 
 - <b>moddump </b> use -r regex, base offset -b, or dump all by omitting
-> vol.py -f memory.img moddump [-r string | -b 0x01234567] --dump-dir=/dir/to/dump/to
+`vol.py -f memory.img moddump [-r string | -b 0x01234567] --dump-dir=/dir/to/dump/to`
 
 - <b> getsids </b> plugin
-> vol.py -f memory.img --profile=Win10x64_16299 getsids -p 6000
+`vol.py -f memory.img --profile=Win10x64_16299 getsids -p 6000`
 
 - <b> Handles </b> Plugin - Supress and look at Type File and Key(reg)
-> vol.py -f memory.img --profile=Win10x64_16299 handles -s -t File,Key -p 6000
+`vol.py -f memory.img --profile=Win10x64_16299 handles -s -t File,Key -p 6000`
 
 - <b> ssdt</b> plugin - find rootkit hooks
-> vol.py -f memory.img ssdt \| egrep -v '(ntoskrnl\|win32k) 
+`vol.py -f memory.img ssdt \| egrep -v '(ntoskrnl\|win32k) `
 
 - <b> apihooks</b> plugin - more rootkit fun
-> vol.py -f memory.img apihooks
+`vol.py -f memory.img apihooks`
 
 - <b> malfind </b> plugin -page_execute_readwrite, look for Executable PE codes
-> vol.py -f memory.mig --profile=Win10x64_16299 malfind | grep -B4 -A2 -ei 'MZ|ELF|NE|OMF' | grep process
-
+`vol.py -f memory.mig --profile=Win10x64_16299 malfind | grep -B4 -A2 -ei 'MZ|ELF|NE|OMF' | grep process`
+<br><br>
 - <b> procdump</b> plugin, 
-> vol.py -f memory.img procdump --dump-dir=/dir/to/dump/to
 
-> Options:
+```
+vol.py -f memory.img procdump --dump-dir=/dir/to/dump/to
+
+Options:
 -p PID
 -o memory offset
 -n regex, used to find process name
+```
 
-- <b> memdump</b> plugin, contains every mem section owned by process, strings analysis can proof useful.
-> vol.py -f memory.img memdump -p 6000 --dump-dir=/dir/to/dump/to
-> strings -t d -e l /dir/to/dump/to/*.dmp
+- <b> memdump</b> plugin,
+> contains every mem section owned by process, strings analysis can proof useful.
 
-> Options:
+```
+vol.py -f memory.img memdump -p 6000 --dump-dir=/dir/to/dump/to
+strings -t d -e l /dir/to/dump/to/*.dmp
+
+Options:
 -p PID
 -n regex, used to find process name
+```
 
-- <b> filescan</b> plugin, compliments dumpfiles
-> vol.py -f memory.img filescan
+- <b> filescan</b>
+
+>plugin, compliments dumpfiles
+
+`vol.py -f memory.img filescan`
+<br>
 
 - <b> dumpfiles</b> plugin 
-> vol.py -f memory.img dumpfiles -n -i -r \\.dat -D .
+`vol.py -f memory.img dumpfiles -n -i -r \\.dat -D .`
 
-> Options:
+```
+Options:
+
 -D / --dump-dir=path
 -Q phys. offset of File_Object
 -r regular expression (-r) 
 -i case insensitive
 -n original filename in output
-
+```
 
  MemProcFS
 =========
@@ -295,16 +308,21 @@ yara64.exe -[C|c|f|r|p] rules <file/dir>
  -p <threads>:Use specified number of threads during scanning
 ```
 </br>
-#### To use a rules file, you can only specify one static file.  Must <br>utilize an index file if utilizing signatures from multilpe files.
+
+> To use a rules file, you can only specify one static file.  
+Must utilize an index file if utilizing signatures from multilpe files.
 </br>
+
 <b> Index file example:</b>
  
- # Common_APT1_Custom.rules
- # Source sig files to include
+ Common_APT1_Custom.rules
+```
+ #Source sig files to include
  include "<dir>\000_common_rules.yar"
  include "<dir>\APT_APT1.yar"
  include "<dir>\custom_signatures.yar"
-
+```
+<br>
 <b>Many precompiled rules exist already:</b>
 
 > Yara Rules Github:
