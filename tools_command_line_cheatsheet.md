@@ -419,7 +419,8 @@ MFTECmd.exe -f "C:\Temp\SomeMFT" --body "c:\temp\bout" --bdl cMFTECmd.exe -f "C:
 TSK (the Slueth Kit tools)
 -----
 
-fls tool within the TSK (the slueth kit) suite is designed to extract filename and metadata information for files
+- <b>fls</b> 
+>fls tool within the TSK (the slueth kit) suite is designed to extract filename and metadata information for files
 
 ```
 Usage: fls [options] image [inode]
@@ -433,7 +434,7 @@ Useful Options for fls
 -s <sec>: Timeskew correction for system in seconds
 ```
 
-<b>MacTime</b>
+- <b>MacTime</b>
 > tool that tases a file and parses it to present it to a readable format
 
 ```
@@ -444,6 +445,15 @@ mactime [options] -d -b bodyfile -z timezone > timeline.csv
 -y: Dates are displayed in ISO 8601 format
 -z: Specify the time zone (see time zone chart)
 -d: Comma-delimited format Optional: Date Range (yyyy-mm-dd..yyyy-mm-dd)Example: 2020-01-01..2020-6-01
+
+```
+- <b>istat</b> 
+> Displays statistics about metadata structure aka inode supports multiple image types and file systems
+```
+istat [options] image inode
+
+-z zone:  Time zone of original machine (i.e. EST5EDT or GMT)
+-s seconds:  Time skew of original machine (in seconds)
 ```
 
 Plaso / log2timeline.py 
