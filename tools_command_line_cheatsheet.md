@@ -475,3 +475,20 @@ Plaso / log2timeline.py
 
 <b>psort.py</b>
 > psort.py --output-time-zone 'UTC' -o [l2tcsv|elastic] -w [filename] plaso.dump FILTER date [ < or > ] datetime('2000-01-01T00:00:00')
+
+
+libvshadow
+----------
+> Author: Joachim Metz
+> VSS Inspection
+> https://github.com/libyal/libvshadow
+
+- <b>Vsshadowinfo</b> VSS list
+> vsshadowinfo -o <offset> raw_disk_source_file
+
+
+- <b>vshadowmount</b> Mount the vss as a disk
+> vshadowmount [ -o offset ] raw_disk_source_file /mnt/VSS
+>
+> Do a list of the DIR and then mount the VSS file desired
+> mount -o ro,loop,show_sys_files,streams_interface=windows <vss> /mnt/dir/<vss>
