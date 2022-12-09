@@ -456,6 +456,15 @@ istat [options] image inode
 -s seconds:  Time skew of original machine (in seconds)
 ```
 
+- <b>icat</b>
+> extracts file or attribute contents from MFT inodes; useful to retrieve metadata from inodes marked delete and Alt. Data streams
+
+```
+icat [options] image inode > new.file
+-r:      Recover deleted file
+-s:      Display slack space at end of file
+``` 
+
 Plaso / log2timeline.py 
 ---------------
 > Author: Kristinn Guðjónsson
